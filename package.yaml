@@ -6,13 +6,19 @@ copyright:           "2020 Tomas Aschan"
 
 dependencies:
   - base
-  
+
 library:
   source-dirs: src/lib
   ghc-options:
     - -Wall
-  dependencies: []
-
+  dependencies:
+    - aeson
+    - mtl
+    - servant
+    - servant-server
+    - sort
+    - text
+  
 executables:
   server:
     main:                Main.hs
@@ -24,6 +30,10 @@ executables:
       - -Wall
     dependencies:
       - hello-servant
+      - servant
+      - servant-server
+      - wai
+      - warp
 
 tests:
   unit:
@@ -39,6 +49,7 @@ tests:
 
 default-extensions:
   - DataKinds
+  - DeriveGeneric
   - OverloadedStrings
   - TypeOperators
   
