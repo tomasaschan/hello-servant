@@ -1,0 +1,44 @@
+name:                hello-servant
+version:             0.1.0.0
+author:              "Tomas Aschan"
+maintainer:          "1550920+tomasaschan@users.noreply.github.com"
+copyright:           "2020 Tomas Aschan"
+
+dependencies:
+  - base
+  
+library:
+  source-dirs: src/lib
+  ghc-options:
+    - -Wall
+  dependencies: []
+
+executables:
+  server:
+    main:                Main.hs
+    source-dirs:         src/app
+    ghc-options:
+      - -threaded
+      - -rtsopts
+      - -with-rtsopts=-N
+      - -Wall
+    dependencies:
+      - hello-servant
+
+tests:
+  unit:
+    main:                Spec.hs
+    source-dirs:         test/lib
+    ghc-options:
+      - -threaded
+      - -rtsopts
+      - -with-rtsopts=-N
+      - -Wall
+    dependencies:
+      - hello-servant
+
+default-extensions:
+  - DataKinds
+  - OverloadedStrings
+  - TypeOperators
+  
