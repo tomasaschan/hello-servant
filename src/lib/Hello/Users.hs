@@ -2,12 +2,12 @@
 
 module Hello.Users where
 
+import           Data.HodaTime.Calendar.Gregorian
+import           Data.HodaTime.CalendarDate
 import           Data.Text
 import           GHC.Generics
 
-import           Hello.Date
-
 data User = User {
   name      :: Text,
-  birthdate :: Date
+  birthdate :: CalendarDate Gregorian
 } deriving (Eq, Show, Generic)

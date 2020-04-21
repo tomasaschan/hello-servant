@@ -3,7 +3,14 @@
 # For more information, please see the documentation at:
 #   https://docs.haskellstack.org/en/stable/lock_files
 
-packages: []
+packages:
+- completed:
+    hackage: hodatime-0.2.1.1@sha256:fac858f05e158f3ab0921b3e05278cd67d82e443029cbbdefe5d421f637d6e62,4949
+    pantry-tree:
+      size: 4024
+      sha256: 8918a92a260f301628b17a98abe14291d931351500ecab3af128348e885fbec0
+  original:
+    hackage: hodatime-0.2.1.1
 snapshots:
 - completed:
     size: 524154

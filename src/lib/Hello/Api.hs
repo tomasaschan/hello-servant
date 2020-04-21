@@ -1,13 +1,17 @@
 {-# OPTIONS_GHC -fno-warn-orphans #-}
+{-# LANGUAGE FlexibleInstances #-}
 
 module Hello.Api where
 
+import           Control.Lens
 import           Data.Aeson
+import           Data.HodaTime.Calendar.Gregorian
+import           Data.HodaTime.CalendarDate
 import           Data.Text
 import           Servant
+import           Text.Printf
 
-import           Hello.Date
-import           Hello.Db    as Db
+import           Hello.Db                         as Db
 import           Hello.Users
 
 type UsersAPI  = "users" :> Get '[JSON] [UserData]
@@ -17,8 +21,13 @@ type UsersAPI  = "users" :> Get '[JSON] [UserData]
 
 instance ToJSON UserData
 instance ToJSON User
-instance ToJSON Date where
-  toJSON  = String . pack . show
+instance ToJSON (CalendarDate Gregorian) where
+  toJSON dt = String . pack $ printf "%u-%02u-%02u" y m d
+    where
+      y = view year dt
+      m = view monthl dt + 1
+      d = view day dt
+
 
 list :: Handler [UserData]
 list = return $ getUsers Name

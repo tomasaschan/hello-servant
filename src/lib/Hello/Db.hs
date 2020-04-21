@@ -2,11 +2,12 @@
 
 module Hello.Db where
 
+import           Data.HodaTime.Calendar.Gregorian
+import           Data.Maybe
 import           Data.Ord
 import           Data.Sort
 import           GHC.Generics
 
-import           Hello.Date
 import           Hello.Users
 
 data UserData = UserData {
@@ -16,8 +17,8 @@ data UserData = UserData {
 
 users :: [UserData]
 users =
-  [ UserData 1 (User "Tomas" ( Date 1987 8 23))
-  , UserData 2 (User "Sara" (Date 1989 11 29))
+  [ UserData 1 (User "Tomas" (fromJust $ calendarDate 23 August 1987))
+  , UserData 2 (User "Sara" (fromJust $ calendarDate 29 November 1989))
   ]
 
 

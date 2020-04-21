@@ -13,6 +13,8 @@ library:
     - -Wall
   dependencies:
     - aeson
+    - hodatime
+    - lens
     - mtl
     - servant
     - servant-server

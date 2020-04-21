@@ -2,7 +2,8 @@ resolver: lts-14.20
 
 packages:
 - .
-extra-deps: []
+extra-deps:
+  - hodatime-0.2.1.1
 
 # Control whether we use the GHC we find on the path
 # system-ghc: true
