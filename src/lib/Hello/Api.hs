@@ -7,6 +7,7 @@ import           Control.Lens
 import           Data.Aeson
 import           Data.HodaTime.Calendar.Gregorian
 import           Data.HodaTime.CalendarDate
+import           Data.Maybe
 import           Data.Text
 import           Servant
 import           Text.Printf
@@ -14,7 +15,7 @@ import           Text.Printf
 import           Hello.Db                         as Db
 import           Hello.Users
 
-type UsersAPI  = "users" :> Get '[JSON] [UserData]
+type UsersAPI  = "users" :> QueryParam "sortby" SortBy :> Get '[JSON] [UserData]
               -- :<|> "user" :> Capture "userid" Nat :> Get '[JSON] (Maybe UserData)
               -- :<|> "users" :> ReqBody '[JSON] User :> PostCreated '[JSON] UserData
               -- :<|> "user" :> Capture "userid" Nat :> ReqBody '[JSON] User :> Put '[JSON] UserData
@@ -28,9 +29,15 @@ instance ToJSON (CalendarDate Gregorian) where
       m = view monthl dt + 1
       d = view day dt
 
+instance FromHttpApiData SortBy where
+  parseQueryParam sortBy =
+    case toLower sortBy of
+      "name" -> Right Name
+      "age"  -> Right Age
+      _      -> Left $ append "Invalid sort order: " sortBy
 
-list :: Handler [UserData]
-list = return $ getUsers Name
+list :: Maybe SortBy -> Handler [UserData]
+list = return . getUsers . fromMaybe Id
 
 usersApi :: Server UsersAPI
 usersApi = list

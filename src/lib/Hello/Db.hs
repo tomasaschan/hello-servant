@@ -18,12 +18,14 @@ data UserData = UserData {
 users :: [UserData]
 users =
   [ UserData 1 (User "Tomas" (fromJust $ calendarDate 23 August 1987))
-  , UserData 2 (User "Sara" (fromJust $ calendarDate 29 November 1989))
+  , UserData 3 (User "Sara" (fromJust $ calendarDate 29 November 1989))
+  , UserData 2 (User "Frippe" (fromJust $ calendarDate 1 December 1988))
   ]
 
 
-data SortBy = Age | Name
+data SortBy = Id | Age | Name
 
 getUsers :: SortBy -> [UserData]
 getUsers Name = sortOn (name . user) users
 getUsers Age  = sortOn (Down . birthdate . user) users
+getUsers Id   = sortOn Hello.Db.id users
