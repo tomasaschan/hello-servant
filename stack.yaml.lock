@@ -5,12 +5,12 @@
 
 packages:
 - completed:
-    hackage: hodatime-0.2.1.1@sha256:fac858f05e158f3ab0921b3e05278cd67d82e443029cbbdefe5d421f637d6e62,4949
+    hackage: servant-errors-0.1.4.0@sha256:abfb688fc7b5e6ceda9a7a1fbbfb26d7a8c8a1340ecdd5189af0a69d92bbb4ee,2540
     pantry-tree:
-      size: 4024
-      sha256: 8918a92a260f301628b17a98abe14291d931351500ecab3af128348e885fbec0
+      size: 349
+      sha256: 8e5ff7b40fee81491c0dc144fc4a70443815502eb1827b92138844edd030f341
   original:
-    hackage: hodatime-0.2.1.1
+    hackage: servant-errors-0.1.4.0
 snapshots:
 - completed:
     size: 524154

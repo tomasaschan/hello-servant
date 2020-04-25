@@ -3,8 +3,7 @@ resolver: lts-14.20
 packages:
 - .
 extra-deps:
-  - hodatime-0.2.1.1
-
+  - servant-errors-0.1.4.0
 # Control whether we use the GHC we find on the path
 # system-ghc: true
 

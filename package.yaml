@@ -13,12 +13,12 @@ library:
     - -Wall
   dependencies:
     - aeson
-    - hodatime
-    - lens
+    - data-default-class
     - mtl
-    - servant
+    - servant-errors
     - servant-server
     - sort
+    - stm
     - text
   
 executables:
